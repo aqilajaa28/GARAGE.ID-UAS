@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    body { font-family: sans-serif; background: #f7f7f7; margin: 0; }
+    header, footer { background-color: #ff0000; text-align: center; padding: 20px; color: white; }
+    nav { background-color: #3e2c1c; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 500; }
+    .struk { background: white; padding: 30px; border: 1px dashed #a52a2a; max-width: 600px; margin: 40px auto; color: #000; border-radius: 10px; }
+    h2 { color: #a52a2a; }
+    .btn { display: block; margin: 20px auto; background: #a52a2a; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <header>INVOICE / STRUK</header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../tranksaksi/index.html">Transaksi</a>
+    <a href="../tentang/index.html">Tentang Kami</a>
+    <a href="../kontak/index.html">Kontak</a>
+    <a href="index.html">Invoice</a>
+  </nav>
+  <div class="struk" id="strukData">
+    <h2>Invoice / Struk Transaksi</h2>
+    <p>Data transaksi akan ditampilkan setelah checkout.</p>
+  </div>
+  <button class="btn" onclick="window.print()">Cetak Struk</button>
+  <footer>&copy; 2025 GARAGEAQIL.ID</footer>
+  <script>
+    const data = JSON.parse(localStorage.getItem("dataTransaksi")) || { nama: "-", produk: "-", jumlah: 0, total: 0 };
+    document.getElementById("strukData").innerHTML = `
+      <h2>Invoice</h2>
+      <p><strong>Nama:</strong> ${data.nama}</p>
+      <p><strong>Produk:</strong> ${data.produk}</p>
+      <p><strong>Jumlah:</strong> ${data.jumlah}</p>
+      <p><strong>Total Bayar:</strong> Rp ${data.total.toLocaleString()}</p>
+    `;
+  </script>
+</body>
+</html>
